@@ -2,18 +2,16 @@
 
 ## Introduction
 
-​		This project implements the partially homomorphic Paillier algorithm and extends and optimizes encryption, decryption, matrix multiplication, and other operations on Numpy matrices, thereby enhancing speed.
+​	This project implements the partially homomorphic Paillier algorithm and extends and optimizes encryption, decryption, matrix multiplication, and other operations on Numpy matrices, thereby enhancing speed.
 
-​		Main reference projects：https://github.com/data61/python-paillier
+​	Main reference project：https://github.com/data61/python-paillier
 
-​		If there is a need for distributed computing, [this project](https://github.com/Galloroc1/Icaro) contains a Paillier implementation that I rewrote using Dask. It can perform distributed encryption, decryption, and computation using Dask's distribute functionality. However, it is worth noting that this is merely an experimental project.
+​	If there is a need for distributed computing, [this project](https://github.com/Galloroc1/Icaro) contains a Paillier implementation that I rewrote using Dask. It can perform distributed encryption, decryption, and computation using Dask's distribute functionality. However, it is worth noting that this is merely an experimental project.
 
 ## Setup
 
-​		use pip to setup:
-
 ```
-pip install paillier-numpy
+pip install paillier_numpy
 ```
 
 ## How to use
@@ -50,28 +48,20 @@ encry = p.encrypt(data)
 # float
 encry2 = encry + 3.1415926
 print(q.decrypt(encry2) == data + 3.1415926)
-# [[ True  True]
-#  [ True  True]]
 
 # int
 encry3 = encry + 666
 print(q.decrypt(encry3) == data + 666)
-# [[ True  True]
-#  [ True  True]]
 
 # matrix float
 data2 = np.random.random_sample((2, 2))
 encry4 = encry + data2
 print(q.decrypt(encry4) == data + data2)
-# [[ True  True]
-#  [ True  True]]
 
 # matrix int
 data2 = np.random.randint(-100,100,(2, 2))
 encry5 = encry + data2
 print(q.decrypt(encry5) == data + data2)
-# [[ True  True]
-#  [ True  True]]
 ```
 
 ### Ciphertext Multiplication
@@ -84,14 +74,10 @@ encry = p.encrypt(data)
 # int
 encry2 = encry * 2
 print(q.decrypt(encry2)==data*2)
-# [[ True  True]
-#  [ True  True]]
 
 # float
 encry2 = encry * 3.141592
 print(q.decrypt(encry2)==data*3.141592)
-# [[ True  True]
-#  [ True  True]]
 ```
 
 
@@ -109,17 +95,13 @@ encry = p.encrypt(data)
 # [A].dot(B)
 encry2 = encry.dot(data2)
 print(q.decrypt(encry2)==data.dot(data2))
-# [[ True  True  True]
-#  [ True  True  True]]
+
 
 # B.dot([A])
 # !!!!!!!!!!!!!!!!!!!!!!
 # [A] must  be converted to Numpy.ndarray
 encry3 = data2.T.dot(encry.toArray())
 print(q.decrypt(encry3)==data2.T.dot(data))
-# [[ True  True]
-#  [ True  True]
-#  [ True  True]]
 ```
 
 
