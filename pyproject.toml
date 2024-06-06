@@ -1,0 +1,18 @@
+[project]
+name = "paillier_numpy"
+version = "0.0.2"
+authors = [
+  { name="Galloroc", email="1176651368@qq.com" },
+]
+description = "你吃辣条舔袋吗"
+readme = "readme.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+Homepage = "https://github.com/Galloroc1/paillier"
+Issues = "https://github.com/Galloroc1/paillier/issues"
